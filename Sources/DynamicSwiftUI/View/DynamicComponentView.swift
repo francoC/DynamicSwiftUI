@@ -34,7 +34,7 @@ struct DynamicComponentView: View {
         case "List": List(component.components ?? [], id: \.id) { child in
             generateChildren(for: child)
         }
-        case "NavigationView": NavigationView { generateChildren(for: component) }
+        case "NavigationStack": NavigationStack() { generateChildren(for: component) }
         case "TabView": TabView { generateChildren(for: component) }
         case "Image":
             generateImage(from: component)

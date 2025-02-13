@@ -11,8 +11,8 @@ import SwiftUI
 public class DynamicScreenViewModel: ObservableObject {
     @Published var screenData: ScreenData?
     @Published var dynamicStates: [String: String] = [:]
-    @Published var navigationDestination: String?
     private var componentDefaults: ComponentDefaults?
+    @Published var navigationPath: [String] = []
     
     private let pluginConfig: PluginConfig
         
@@ -37,7 +37,7 @@ public class DynamicScreenViewModel: ObservableObject {
         guard let url = URL(string: url) else { return }
         URLSession.shared.dataTask(with: url) { data, _, _ in
             if let data = data {
-                DispatchQueue.main.async {
+                Task { @MainActor in
                     self.decodeScreenData(from: data)
                 }
             }
@@ -94,7 +94,9 @@ public class DynamicScreenViewModel: ObservableObject {
         switch actionData.type {
         case "navigate":
             if let destination = actionData.payload?["destination"] {
-                navigationDestination = destination
+                Task { @MainActor in
+                    self.navigationPath.append(destination)
+                }
             }
         case "updateState":
             if let key = actionData.payload?["key"], let value = actionData.payload?["value"] {
