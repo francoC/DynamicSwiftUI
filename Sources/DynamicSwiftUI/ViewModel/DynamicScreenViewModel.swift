@@ -24,7 +24,7 @@ public class DynamicScreenViewModel: ObservableObject {
         self.init(config: configuration)
     }
     
-    func loadScreen(from url: String) {
+    public func loadScreen(from url: String) {
         loadComponentDefaults(from: pluginConfig.componentsDefaultsFile ?? "componentDefaults")
         if url.starts(with: "http") {
             loadScreenFromNetwork(url: url)
