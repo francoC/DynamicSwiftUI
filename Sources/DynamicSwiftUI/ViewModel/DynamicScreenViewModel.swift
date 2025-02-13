@@ -12,7 +12,7 @@ public class DynamicScreenViewModel: ObservableObject {
     @Published var screenData: ScreenData?
     @Published var dynamicStates: [String: String] = [:]
     private var componentDefaults: ComponentDefaults?
-    @Published var navigationPath: [String] = []
+    @Published public var navigationPath: [String] = []
     
     private let pluginConfig: PluginConfig
         
