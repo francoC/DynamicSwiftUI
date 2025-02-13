@@ -8,7 +8,11 @@
 import SwiftUI
 
 public struct DynamicUIView: View {
-    @ObservedObject var viewModel: DynamicScreenViewModel
+    @ObservedObject public var viewModel: DynamicScreenViewModel
+    
+    public init(viewModel: DynamicScreenViewModel) {
+        self.viewModel = viewModel
+    }
     
     public var body: some View {
         if let screenData = viewModel.screenData {

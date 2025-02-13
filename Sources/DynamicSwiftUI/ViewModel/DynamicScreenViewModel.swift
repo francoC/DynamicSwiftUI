@@ -20,6 +20,10 @@ public class DynamicScreenViewModel: ObservableObject {
         self.pluginConfig = config
     }
     
+    public convenience init(configuration: PluginConfig = PluginConfig()) {
+        self.init(config: configuration)
+    }
+    
     func loadScreen(from url: String) {
         loadComponentDefaults(from: pluginConfig.componentsDefaultsFile ?? "componentDefaults")
         if url.starts(with: "http") {

@@ -9,7 +9,7 @@ public struct PluginConfig {
     var defaultScreenFile: String?
     var componentsDefaultsFile: String?
     
-    init(defaultScreenFile: String? = nil, componentsDefaultsFile: String? = nil) {
+    public init(defaultScreenFile: String? = nil, componentsDefaultsFile: String? = nil) {
         self.defaultScreenFile = defaultScreenFile
         self.componentsDefaultsFile = componentsDefaultsFile
     }
