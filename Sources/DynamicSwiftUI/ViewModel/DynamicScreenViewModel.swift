@@ -8,7 +8,7 @@
 import SwiftUI
 
 @MainActor
-class DynamicScreenViewModel: ObservableObject {
+public class DynamicScreenViewModel: ObservableObject {
     @Published var screenData: ScreenData?
     @Published var dynamicStates: [String: String] = [:]
     @Published var navigationDestination: String?

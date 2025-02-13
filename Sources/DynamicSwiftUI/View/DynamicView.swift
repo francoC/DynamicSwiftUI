@@ -7,10 +7,10 @@
 
 import SwiftUI
 
-struct DynamicUIView: View {
+public struct DynamicUIView: View {
     @ObservedObject var viewModel: DynamicScreenViewModel
     
-    var body: some View {
+    public var body: some View {
         if let screenData = viewModel.screenData {
             VStack {
                 ForEach(screenData.components, id: \.id) { component in
